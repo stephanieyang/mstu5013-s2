@@ -1,4 +1,4 @@
-<stagingCanvas>
+<staging-canvas>
   <div class="container" id="stagingCanvas">
     <h3>Staging Canvas</h3>
       <div class="row">
@@ -24,4 +24,4 @@
   background-color: yellow;
   }
   </style>
-</stagingCanvas>
+</staging-canvas>

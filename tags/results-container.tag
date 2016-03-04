@@ -1,4 +1,4 @@
-<resultsContainer>  
+<results-container>  
  <div class="container" id="resultsContainer">
   <h2>Results Container</h2>
     <div class="row">
@@ -25,4 +25,4 @@
   background-color: orange;
   }
   </style>
-</resultsContainer>
+</results-container>

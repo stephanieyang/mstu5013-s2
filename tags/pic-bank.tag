@@ -1,4 +1,4 @@
-<picBank>
+<pic-bank>
   <div class="container" id="picBank">
     <h3>Picture Bank</h3>
       <div class="col-md-6">
@@ -43,4 +43,4 @@
   background-color: green;
   }
   </style>
-</picBank>
+</pic-bank>

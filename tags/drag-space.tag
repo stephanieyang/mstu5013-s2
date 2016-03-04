@@ -1,14 +1,14 @@
-<dragSpace>
+<drag-space>
   <div class="container" id="dragSpace">
     <h2>Draggable Container</h2>
       <div class="row">
         <div class="col-md-8">
-          <stagingCanvas>
-          </stagingCanvas>
+          <staging-canvas>
+          </staging-canvas>
         </div>
         <div class="col-md-4">
-          <picBank>
-          </picBank>
+          <pic-bank>
+          </pic-bank>
         </div>
       </div> 
   </div> 
@@ -17,4 +17,4 @@
   background-color: blue;
   }
   </style>
-</dragSpace>
+</drag-space>
