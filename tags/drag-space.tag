@@ -120,7 +120,7 @@ this.atMaxCapacity = function() {
     console.log('loadItemsAtInit');
     console.log("imageList",imageList);
     for(var i = 0; i < imageList.length; i++) {
-      var imageId = imageList[i].imageName;
+      var imageId = imageList[i].imageId;
       setImageLocation(imageId, BANK_ID);
       itemDetails[imageId] = imageList[i];
       //itemDirectory['#' + imageId] = BANK_ID;
@@ -163,9 +163,9 @@ this.handleRightClick = function(event) {
     console.log('handleImageClick');
     var isForward = !(isRightClick || false);
     //console.log(event);
-    //console.log(event.item.image.imageName);
+    //console.log(event.item.image.imageId);
     //var imageId = event.currentTarget.id;
-    var imageId = event.item.image.imageName;
+    var imageId = event.item.image.imageId;
     var currentLoc = getImageLocation(imageId);
     var dest = determineDestination(currentLoc, isForward);
     console.log('current',currentLoc);
@@ -234,10 +234,11 @@ this.handleRightClick = function(event) {
 
   // when the button is clicked, log which items are in the target drop zone
   this.getResults = function() {
-    console.log('number of selected items:', this.selectedItems.length);
-    console.log('items selected:', this.selectedItems);
-    if(selectedItems.length === 3) {
-      // do stuff
+    console.log('number of selected items:', this.targetItems.length);
+    console.log('items selected:', this.targetItems);
+    if(this.targetItems.length === 3) {
+      console.log('correct number selected');
+      // do other stuff
     }
   };
   </script>

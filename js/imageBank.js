@@ -1,27 +1,27 @@
 var imageList = [
 {
 	imageSrc : 'fossil.gif',
-	imageName : 'fossil',
+	imageId : 'fossil',
 	category : 'geology'
 },
 {
 	imageSrc : 'plant.gif',
-	imageName : 'plant',
+	imageId : 'plant',
 	category : 'botany'
 },
 {
 	imageSrc : 'incubator.gif',
-	imageName : 'incubator',
+	imageId : 'incubator',
 	category : 'biology'
 },
 {
 	imageSrc : 'dropper.gif',
-	imageName : 'dropper',
+	imageId : 'dropper',
 	category : 'chemistry'
 },
 {
 	imageSrc : 'star.png',
-	imageName : 'star',
+	imageId : 'star',
 	category : 'astronomy'
 },
 ];
