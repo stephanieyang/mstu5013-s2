@@ -61,10 +61,10 @@
   var BANK_ID = '#picBank';
   var STAGE_ID = '#stage';
   var TARGET_ID = '#target';
-  this.bankItems = []; // list of items in the picture bank
+  this.bankItems = []; // list of items/images in the picture bank
   this.stageItems = []; // list of items in the stage area
   this.targetItems = []; // list of items in the target/final area
-  this.itemDetails = {};
+  this.itemDetails = {}; // stores information about each item: filename, id, category, location on screen
 
 
 
@@ -81,6 +81,7 @@
   this.loadItemsAtInit = function() {
     for(var i = 0; i < imageList.length; i++) {
       var imageDetails = imageList[i];
+      imageDetails['location'] = BANK_ID;
       var imageId = imageDetails.imageId;
       this.bankItems.push(imageDetails);
       this.itemDetails[imageId] = imageDetails;
@@ -92,25 +93,22 @@
     return (this.targetItems.length === MAX_ITEMS);
   }
 
-  /*  */
+  /* Returns whether an image is currently in the picture bank, the stage area, or the target area. */
   this.getImageLocation = function(imageId) {
-    for(var i = 0; i < this.targetItems.length; i++) {
-      if(this.targetItems[i].imageId === imageId) {
-        return TARGET_ID;
-      }
-    }
-    for(var i = 0; i < this.stageItems.length; i++) {
-      if(this.stageItems[i].imageId === imageId) {
-        return STAGE_ID;
-      }
-    }
-    return BANK_ID;
+    return this.itemDetails[imageId]['location'];
   };
 
+  this.setImageLocation = function(imageId, loc) {
+    this.itemDetails[imageId]['location'] = loc;
+
+  }
+
+  /* Handles the right-click event. Mostly a wrapper for the generic handleImageClick. */
   this.handleRightClick = function(event) {
     this.handleImageClick(event,true);
   };
 
+  /* Handles click events for images. */
   this.handleImageClick = function(event, isRightClick) {
     var isForward = !(isRightClick || false);
     //console.log(event);
@@ -130,6 +128,8 @@
     }
   };
 
+  /* Given a current image location and a direction indicated by left/right click (forward/back),
+   * returns where the image should go next. */
   function determineDestination(currentLoc, isForwardClick) {
     switch(currentLoc) {
       case BANK_ID:
@@ -147,6 +147,7 @@
     }
   }
 
+  /* Gets the index of the item object corresponding to a given ID in a given list. */
   function getIndexOfItem(itemList, itemId) {
     for(var i = 0; i < itemList.length; i++) {
       if(itemList[i]['imageId'] === itemId) {
@@ -157,6 +158,7 @@
     console.log('ERROR: item not found',itemId,itemList);
   }
 
+  /* Handles the swapping of items between lists for different area locations. */
   this.moveItem = function(id, src, dest) {
     console.log('moveItem',id,src,dest);
     var item;
@@ -194,12 +196,13 @@
         console.log("invalid source location");
         break;
     }
+    // log the change in location
+    this.setImageLocation(id,dest);
+    console.log(this.itemDetails);
   }
 
-  /*
-   * Handles the logic of whether the target zone ought to accept/reject new images.
-   * Also changes the color of the target zone to reflect this.
-   */
+  /* Handles the logic of whether the target zone ought to accept/reject new images.
+   * Also changes the color of the target zone to reflect this. */
   this.handleTargetZone = function() {
     if(this.atMaxCapacity()) {
       $(TARGET_ID).css('background-color','#C0C0C0');
@@ -209,15 +212,6 @@
       //dropZoneDisabledAtDragStart = true;
     }
   };
-
-  
-
-  /*
-   * The targetzone is more discerning than the sandbox.
-   * Until MAX_ITEMS items are inside, it will take any image.
-   * At MAX_ITEMS items, it will reject any images until one is taken out.
-   * Therefore we want to track how many items are inside the drop zone and which items they are.
-   */
 
   // when the button is clicked, log which items are in the target drop zone
   this.getResults = function() {
