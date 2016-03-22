@@ -58,130 +58,79 @@
   </style>
   <script>
   var MAX_ITEMS = 3;
-  var itemDetails = {}
-  var itemDirectory = {}; // dictionary of items/locations
   var BANK_ID = '#picBank';
   var STAGE_ID = '#stage';
   var TARGET_ID = '#target';
-  this.bankItems = [];
-  this.stageItems = [];
-  this.targetItems = [];
+  this.bankItems = []; // list of items in the picture bank
+  this.stageItems = []; // list of items in the stage area
+  this.targetItems = []; // list of items in the target/final area
+  this.itemDetails = {};
 
-  this.divideItems = function() {
-    this.bankItems = [];
-    this.stageItems = [];
-    this.targetItems = [];
-    var items = Object.keys(itemDirectory);
-    console.log(items);
-    for(var i = 0; i < items.length; i++) {
-      var imgId = items[i];
-      var imgDetails = itemDetails[imgId];
-      var imgLocation = getImageLocation(imgId);
-      switch(imgLocation) {
-        case BANK_ID:
-          this.bankItems.push(imgDetails);
-          break;
-        case STAGE_ID:
-          this.stageItems.push(imgDetails);
-          break;
-        case TARGET_ID: 
-          this.targetItems.push(imgDetails);
-          break;
-      }
-    }
-    printContents();
-  }
 
-  function printContents() {
-    console.log("bank",this.bankItems);
-    console.log("stage",this.stageItems);
-    console.log("target",this.targetItems);
-    console.log("imageList",imageList);
-  }
-
-  console.log('this',this);
 
   this.on('update', function() {
-    console.log('update logged');
-    console.log(this);
-    this.divideItems();
+    // continuously change the color of the target area according to how many items are inside
     this.handleTargetZone();
   });
 
+  this.on('before-mount', function() {
+    this.loadItemsAtInit();
+  });
 
-  /*
-   * Returns true iff the number of items in the target zone is the maximum allowed.
-   */
-this.atMaxCapacity = function() {
+  /* Loads the image details at the start. */
+  this.loadItemsAtInit = function() {
+    for(var i = 0; i < imageList.length; i++) {
+      var imageDetails = imageList[i];
+      var imageId = imageDetails.imageId;
+      this.bankItems.push(imageDetails);
+      this.itemDetails[imageId] = imageDetails;
+    }
+  };
+
+  /* Returns true iff the number of items in the target zone is the maximum allowed. */
+  this.atMaxCapacity = function() {
     return (this.targetItems.length === MAX_ITEMS);
   }
 
-  this.loadItemsAtInit = function() {
-    console.log('loadItemsAtInit');
-    console.log("imageList",imageList);
-    for(var i = 0; i < imageList.length; i++) {
-      var imageId = imageList[i].imageId;
-      setImageLocation(imageId, BANK_ID);
-      itemDetails[imageId] = imageList[i];
-      //itemDirectory['#' + imageId] = BANK_ID;
+  /*  */
+  this.getImageLocation = function(imageId) {
+    for(var i = 0; i < this.targetItems.length; i++) {
+      if(this.targetItems[i].imageId === imageId) {
+        return TARGET_ID;
+      }
     }
-    /*
-    for(var i = 0; i < imageIdList.length; i++) {
-      var imageId = imageIdList[i];
-      setImageLocation(imageId, BANK_ID);
-      //itemDirectory['#' + imageId] = BANK_ID;
+    for(var i = 0; i < this.stageItems.length; i++) {
+      if(this.stageItems[i].imageId === imageId) {
+        return STAGE_ID;
+      }
     }
-    console.log(itemDirectory);
-    */
-    console.log("item details",itemDetails);
-  }
+    return BANK_ID;
+  };
 
-  console.log('init');
-  this.bankItems = [];
-  this.stageItems = [];
-  this.targetItems = [];
-  this.loadItemsAtInit();
-  //this.divideItems();
-
-  function getImageLocation(imageId) {
-    console.log('getImageLocation');
-    return itemDirectory[imageId];
-  }
-
-  function setImageLocation(imageId, loc) {
-    console.log('setImageLocation');
-    itemDirectory[imageId] = loc;
-    console.log("itemDirectory",itemDirectory);
-  }
-
-this.handleRightClick = function(event) {
-  console.log('handleRightClick');
-  this.handleImageClick(event,true);
-}
+  this.handleRightClick = function(event) {
+    this.handleImageClick(event,true);
+  };
 
   this.handleImageClick = function(event, isRightClick) {
-    console.log('handleImageClick');
     var isForward = !(isRightClick || false);
     //console.log(event);
     //console.log(event.item.image.imageId);
     //var imageId = event.currentTarget.id;
     var imageId = event.item.image.imageId;
-    var currentLoc = getImageLocation(imageId);
+    var currentLoc = this.getImageLocation(imageId);
     var dest = determineDestination(currentLoc, isForward);
-    console.log('current',currentLoc);
-    console.log('dest',dest);
+    console.log('current',currentLoc,'dest',dest);
     if(currentLoc === dest) {
       console.log('invalid/same destination:',dest);
       // do nothing
     } else if(dest === TARGET_ID && this.atMaxCapacity()) {
       alert('Only 3 items max in the final zone!');
     } else {
-      moveItem(imageId, currentLoc, dest);
+      this.moveItem(imageId, currentLoc, dest);
     }
   };
 
   function determineDestination(currentLoc, isForwardClick) {
-    console.log('determineDestination');
     switch(currentLoc) {
       case BANK_ID:
         return (isForwardClick ? STAGE_ID : BANK_ID);
@@ -198,22 +147,60 @@ this.handleRightClick = function(event) {
     }
   }
 
-  function moveItem(id, src, dest) {
-    console.log('moveItem');
-    console.log(id,src,dest);
-    var item = $("#" + id);
-    //$(src).detach(item);
-    //item.detach();
-    //$(dest).append(item);
-    setImageLocation(id, dest);
+  function getIndexOfItem(itemList, itemId) {
+    for(var i = 0; i < itemList.length; i++) {
+      if(itemList[i]['imageId'] === itemId) {
+        return i;
+      }
+    }
+    // if here, something has gone wrong - didn't find the item in the list
+    console.log('ERROR: item not found',itemId,itemList);
+  }
+
+  this.moveItem = function(id, src, dest) {
+    console.log('moveItem',id,src,dest);
+    var item;
+    // remove item from its current list
+    switch(src) {
+      case BANK_ID:
+        var index = getIndexOfItem(this.bankItems, id);
+        // splice should return a list of length 1 here, so get the contents via the 0th index
+        item = this.bankItems.splice(index,1)[0];
+        break;
+      case STAGE_ID:
+        var index = getIndexOfItem(this.stageItems, id);
+        item = this.stageItems.splice(index,1)[0];
+        break;
+      case TARGET_ID:
+        var index = getIndexOfItem(this.targetItems, id);
+        item = this.targetItems.splice(index,1)[0];
+        break;
+      default:
+        console.log("invalid source location");
+        break;
+    }
+    // add item to new (destination) list
+    switch(dest) {
+      case BANK_ID:
+        this.bankItems.push(item);
+        break;
+      case STAGE_ID:
+        this.stageItems.push(item);
+        break;
+      case TARGET_ID:
+        this.targetItems.push(item);
+        break;
+      default:
+        console.log("invalid source location");
+        break;
+    }
   }
 
   /*
-   * Handles the logic of whether the target drop zone ought to accept/reject new images.
+   * Handles the logic of whether the target zone ought to accept/reject new images.
    * Also changes the color of the target zone to reflect this.
    */
   this.handleTargetZone = function() {
-    console.log('handleTargetZone');
     if(this.atMaxCapacity()) {
       $(TARGET_ID).css('background-color','#C0C0C0');
       //dropZoneDisabledAtDragStart = false;
@@ -221,12 +208,12 @@ this.handleRightClick = function(event) {
       $(TARGET_ID).css('background-color','#B6F9B6');
       //dropZoneDisabledAtDragStart = true;
     }
-  }
+  };
 
   
 
   /*
-   * The target drop zone is more discerning than the sandbox.
+   * The targetzone is more discerning than the sandbox.
    * Until MAX_ITEMS items are inside, it will take any image.
    * At MAX_ITEMS items, it will reject any images until one is taken out.
    * Therefore we want to track how many items are inside the drop zone and which items they are.
@@ -235,10 +222,15 @@ this.handleRightClick = function(event) {
   // when the button is clicked, log which items are in the target drop zone
   this.getResults = function() {
     console.log('number of selected items:', this.targetItems.length);
-    console.log('items selected:', this.targetItems);
+    console.log('items selected:', this.targetItems); // array of image information objects (storing filename, image ID, associated category) - see imageBank.js
     if(this.targetItems.length === 3) {
-      console.log('correct number selected');
-      // do other stuff
+      console.log('at correct capacity');
+      var itemIds = [];
+      for(var i = 0; i < this.targetItems.length; i++) {
+        itemIds.push(this.targetItems[i].imageId);
+      }
+      console.log(itemIds); // array of item IDs - e.g., ['fossil','plant','dropper']
+      // do stuff
     }
   };
   </script>
