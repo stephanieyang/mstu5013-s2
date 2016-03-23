@@ -2,12 +2,12 @@ var imageList = [
 {
 	imageSrc : 'fossil.gif',
 	imageId : 'fossil',
-	category : 'geology'
+	category : 'math'
 },
 {
 	imageSrc : 'plant.gif',
 	imageId : 'plant',
-	category : 'botany'
+	category : 'art'
 },
 {
 	imageSrc : 'incubator.gif',
@@ -22,6 +22,6 @@ var imageList = [
 {
 	imageSrc : 'star.png',
 	imageId : 'star',
-	category : 'astronomy'
+	category : 'physics'
 },
 ];

@@ -29,7 +29,7 @@ var categoryBank = {
 	'math': {
 		'math': ['Math'],
 		'physics': ['Modeling, simulation, economics, computer eningeering'],
-	},
+},
 	'physics': {
 		'physics': ['Physics'],
 	},
