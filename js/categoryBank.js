@@ -16,21 +16,21 @@ var categoryBank = {
 		'physics': [],
 	},
 	'chemistry': {
-		'chemistry': [];
-		'computerScience': [];
-		'math': [];
-		'physics': [];
+		'chemistry': [],
+		'computerScience': [],
+		'math': [],
+		'physics': [],
 	},
 	'computerScience': {
-		'computerScience': [];
-		'math': [];
-		'physics': [];
+		'computerScience': [],
+		'math': [],
+		'physics': [],
 	},
 	'math': {
-		'math': [];
-		'physics': [];
+		'math': [],
+		'physics': [],
 	},
 	'physics': {
-		'physics': [];
+		'physics': [],
 	},
 };

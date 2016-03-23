@@ -225,6 +225,38 @@
       }
       console.log(itemIds); // array of item IDs - e.g., ['fossil','plant','dropper']
       // do stuff
+
+      var choice1 = this.targetItems[0].category;
+      var choice2 = this.targetItems[1].category;
+      var choice3 = this.targetItems[2].category;
+
+      console.log("PRE-sort: You may be interested in: ");
+      console.log(choice1);
+      console.log(choice2);
+      console.log(choice3);
+
+      var combo1 = this.categoryBank[choice1];
+      console.log(combo1);
+
+      //Trying to alphabetically sort each item in targetItems 
+      this.objArraySort = function(a, b) {
+        var textA = a.category.toUpperCase();
+        var textB = b.category.toUpperCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      };
+
+      objArraySort(targetItems[0], targetItems[1]);
+
+      //here is the output for the results, post-sort
+      console.log("POST-sort: You may be interested in: ");
+      console.log(choice1);
+      console.log(choice2);
+      console.log(choice3);
+
+      //output1.push(this.targetItems[0][0]);
+      //console.log(this.targetItems[0].category);
+      //console.log(this.targetItems[1].category);
+      //console.log("You might like: " + choice1 + " " + choice2 + " " + choice3 ".");
     }
   };
   </script>
