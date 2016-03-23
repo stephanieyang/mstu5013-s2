@@ -4,6 +4,9 @@
     <div class="row">
       <div class="col-md-12">
         <h3>You might like these professions:</h3>
+          console.log(choice1);
+          console.log(choice2);
+          console.log(choice3);
 
 
             <div class="row">
