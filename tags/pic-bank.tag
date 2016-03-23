@@ -1,13 +1,17 @@
 <pic-bank>
   <div class="container" id="picBank">
-    <pic each={ image in imageList }></pic>
+  <h3>Image Bank</h3>
+  <pic each={ image in imageList }></pic>
   </div>
   <script>
     console.log(imageList);
   </script>
   <style scoped>
   #picBank {
-  background-color: green;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #160D3A;
+  background-color: white;
   }
   </style>
 </pic-bank>
