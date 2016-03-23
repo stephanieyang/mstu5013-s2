@@ -1,19 +1,19 @@
 // Sorted by alphabetical order
 var categoryBank = {
 	'art': {
-		'art': [];
-		'biology': [];
-		'chemistry': [];
-		'computerScience': [];
-		'math': [];
-		'physics': [];
+		'art': [],
+		'biology': [],
+		'chemistry': [],
+		'computerScience': [],
+		'math': [],
+		'physics': [],
 	},
 	'biology': {
-		'biology': [];
-		'chemistry': [];
-		'computerScience': [];
-		'math': [];
-		'physics': [];
+		'biology': [],
+		'chemistry': [],
+		'computerScience': [],
+		'math': [],
+		'physics': [],
 	},
 	'chemistry': {
 		'chemistry': [];
