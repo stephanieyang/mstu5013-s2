@@ -21,7 +21,10 @@
   </div>
   <style scoped>
   #stagingCanvas {
-  background-color: yellow;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #160D3A;
+  background-color: white;
   }
   </style>
 </staging-canvas>

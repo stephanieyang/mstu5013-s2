@@ -1,6 +1,6 @@
 <results-container>  
  <div class="container" id="resultsContainer">
-  <h2>Results Container</h2>
+  <h2>Results</h2>
     <div class="row">
       <div class="col-md-12">
         <h3>You might like these professions:</h3>
@@ -24,7 +24,10 @@
   </div>
   <style scoped>
   #resultsContainer {
-  background-color: orange;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #160D3A;
+    background-color: white;
   }
   </style>
   <script>
