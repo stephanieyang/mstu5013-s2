@@ -224,33 +224,30 @@
       for(var i = 0; i < this.targetItems.length; i++) {
         selectedCategories.push(this.targetItems[i].category);
       }
+      //alphabetically sorted each category in targetItems
       selectedCategories.sort();
       console.log(selectedCategories); // array of item categories - e.g., ['math','biology','chemistry']
 
       // do stuff
 
-      var choice1 = this.targetItems[0].category;
-      var choice2 = this.targetItems[1].category;
-      var choice3 = this.targetItems[2].category;
+      var choice1 = selectedCategories[0];
+      var choice2 = selectedCategories[1];
+      var choice3 = selectedCategories[2];
 
       console.log("PRE-sort: You may be interested in: ");
       console.log(choice1);
       console.log(choice2);
       console.log(choice3);
 
-      var combo1 = categoryBank[choice1];
-      var combo2 = categoryBank[choice2];
-      var combo3 = categoryBank[choice3];
+      var combo1 = categoryBank[choice1][choice2];
+      var combo2 = categoryBank[choice1][choice3];
+      var combo3 = categoryBank[choice2][choice3];
       console.log(combo1, combo2, combo3);
 
     }
   };
 
-  //Trying to alphabetically sort each item in targetItems 
-      this.objArraySort = function(a, b) {
-        var textA = a.category;
-        var textB = b.category;
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-      };
+   
+      
   </script>
 </drag-space>
