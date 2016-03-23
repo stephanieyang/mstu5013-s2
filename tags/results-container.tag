@@ -3,7 +3,9 @@
   <h2>Results Container</h2>
     <div class="row">
       <div class="col-md-12">
-        <h3>You might like this profession:</h3>
+        <h3>You might like these professions:</h3>
+
+
             <div class="row">
               <div class="col-md-8">
         <h3>Career Options List</h3>

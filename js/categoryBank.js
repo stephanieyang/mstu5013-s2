@@ -27,7 +27,7 @@ var categoryBank = {
 		'physics': [],
 	},
 	'math': {
-		'math': [],
+		'math': ["fake test"],
 		'physics': [],
 	},
 	'physics': {

@@ -219,11 +219,14 @@
     console.log('items selected:', this.targetItems); // array of image information objects (storing filename, image ID, associated category) - see imageBank.js
     if(this.targetItems.length === 3) {
       console.log('at correct capacity');
-      var itemIds = [];
+      //var itemIds = [];
+      var selectedCategories = [];
       for(var i = 0; i < this.targetItems.length; i++) {
-        itemIds.push(this.targetItems[i].imageId);
+        selectedCategories.push(this.targetItems[i].category);
       }
-      console.log(itemIds); // array of item IDs - e.g., ['fossil','plant','dropper']
+      selectedCategories.sort();
+      console.log(selectedCategories); // array of item categories - e.g., ['math','biology','chemistry']
+
       // do stuff
 
       var choice1 = this.targetItems[0].category;
@@ -235,29 +238,19 @@
       console.log(choice2);
       console.log(choice3);
 
-      var combo1 = this.categoryBank[choice1];
-      console.log(combo1);
+      var combo1 = categoryBank[choice1];
+      var combo2 = categoryBank[choice2];
+      var combo3 = categoryBank[choice3];
+      console.log(combo1, combo2, combo3);
 
-      //Trying to alphabetically sort each item in targetItems 
-      this.objArraySort = function(a, b) {
-        var textA = a.category.toUpperCase();
-        var textB = b.category.toUpperCase();
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-      };
-
-      objArraySort(targetItems[0], targetItems[1]);
-
-      //here is the output for the results, post-sort
-      console.log("POST-sort: You may be interested in: ");
-      console.log(choice1);
-      console.log(choice2);
-      console.log(choice3);
-
-      //output1.push(this.targetItems[0][0]);
-      //console.log(this.targetItems[0].category);
-      //console.log(this.targetItems[1].category);
-      //console.log("You might like: " + choice1 + " " + choice2 + " " + choice3 ".");
     }
   };
+
+  //Trying to alphabetically sort each item in targetItems 
+      this.objArraySort = function(a, b) {
+        var textA = a.category;
+        var textB = b.category;
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      };
   </script>
 </drag-space>
