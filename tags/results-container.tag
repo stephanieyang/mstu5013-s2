@@ -1,10 +1,10 @@
-<results-container>  
+<results-container>
  <div class="container" id="resultsContainer">
   <h2>Results</h2>
     <div class="row">
       <div class="col-md-12">
         <h3>You might like these professions:</h3>
-
+        <results-test-display></results-test-display>
 
             <div class="row">
               <div class="col-md-8">
@@ -30,13 +30,9 @@
     background-color: white;
   }
   </style>
-  <script>
+  <script src="results-test-display.tag" type="riot/tags">
       /*console.log(choice1);
       console.log(choice2);
       console.log(choice3);*/
-
-
-
-
   </script>
 </results-container>
