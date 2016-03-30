@@ -30,7 +30,7 @@
     background-color: white;
   }
   </style>
-  <script src="results-test-display.tag" type="riot/tags">
+  <script>
       /*console.log(choice1);
       console.log(choice2);
       console.log(choice3);*/
