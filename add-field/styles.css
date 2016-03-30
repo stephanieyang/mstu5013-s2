@@ -1,0 +1,17 @@
+textarea {
+	width:600px;
+	height:200px;
+}
+
+input {
+	width:600px;
+	height:20px;
+}
+
+div {
+	padding:10px;
+}
+
+button {
+	margin-top:5px;
+}
