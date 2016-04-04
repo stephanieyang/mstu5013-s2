@@ -15,7 +15,7 @@
     //I cannot access the variables from drag-sapce.tag.
     //Perhaps we need to declare these items at a higher level, or somehow
     //include this functionality in the same file without getting too messy
-
+    //**The solution may be to use Mixin for Riot.js
 
 
 
