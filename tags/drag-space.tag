@@ -253,10 +253,34 @@
       console.log(choice2);
       console.log(choice3);
 
+
+      var fieldQuery = new Parse.Query('Field');
+      fieldQuery.containedIn("categories", [choice1,choice2,choice3]);
+      fieldQuery.find().then(function(results) {
+        console.log(results);
+      });
+
+      var mentorQuery = new Parse.Query('Mentor');
+      mentorQuery.containedIn("fields", [choice1,choice2,choice3]);
+      mentorQuery.find().then(function(results) {
+        console.log(results);
+      });
+
+      // DO MORE STUFF
+
+      // mount the results container, pass in the results
+
+
+
+
+
+
+      /*
       var combo1 = categoryBank[choice1][choice2];
       var combo2 = categoryBank[choice1][choice3];
       var combo3 = categoryBank[choice2][choice3];
       console.log(combo1, combo2, combo3);
+      */
 
     }
   };
