@@ -12,6 +12,7 @@
   this.testResults = function(){
     alert("I was pushed!");
     console.log("should have printed combo1");
+    console.log(this.opts.selectedCategories[0]);
     //I cannot access the variables from drag-sapce.tag.
     //Perhaps we need to declare these items at a higher level, or somehow
     //include this functionality in the same file without getting too messy
@@ -19,7 +20,7 @@
 
 
 
-    
+
     // console.log('number of selected items:', this.targetItems.length);
     // console.log('items selected:', this.targetItems); // array of image information objects (storing filename, image ID, associated category) - see imageBank.js
     // if(this.targetItems.length === 3) {

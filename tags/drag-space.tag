@@ -269,8 +269,7 @@
       // DO MORE STUFF
 
       // mount the results container, pass in the results
-
-
+      riot.mount('results-test-display', { 'selectedCategories' : selectedCategories });
 
 
 
@@ -285,4 +284,8 @@
     }
   };
   </script>
+
+  <results-test-display></results-test-display>
+
+
 </drag-space>
