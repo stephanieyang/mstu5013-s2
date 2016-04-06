@@ -253,23 +253,59 @@
       console.log(choice2);
       console.log(choice3);
 
+      var promises = [];
 
+      var fieldList;
       var fieldQuery = new Parse.Query('Field');
+      console.log("making field query");
       fieldQuery.containedIn("categories", [choice1,choice2,choice3]);
-      fieldQuery.find().then(function(results) {
+      promises.push(fieldQuery.find().then(function(results) {
         console.log(results);
-      });
+        fieldList = results; // list of Field objects
+      }));
 
+      var mentorList;
       var mentorQuery = new Parse.Query('Mentor');
+      console.log("making mentor query");
       mentorQuery.containedIn("fields", [choice1,choice2,choice3]);
-      mentorQuery.find().then(function(results) {
+      promises.push(mentorQuery.find().then(function(results) {
         console.log(results);
+        mentorList = results; // list of Mentor objects
+      }));
+
+      Parse.Promise.when(promises).then(function() {
+        console.log("done with promises");
+
+        console.log("mounting");
+
+        // mount the results container, pass in the results
+        riot.mount('results-container', {
+          'selectedCategories' : selectedCategories,
+          'fieldList' : fieldList,
+          'mentorList' : mentorList,
+        });
       });
 
-      // DO MORE STUFF
 
-      // mount the results container, pass in the results
-      riot.mount('results-test-display', { 'selectedCategories' : selectedCategories });
+
+      /*
+      var query = new Parse.Query("Comments");
+      query.equalTo("post", 123);
+
+      query.find().then(function(results) {
+        // Collect one promise for each delete into an array.
+        var promises = [];
+        _.each(results, function(result) {
+          // Start this delete immediately and add its promise to the list.
+          promises.push(result.destroy());
+        });
+        // Return a new promise that is resolved when all of the deletes are finished.
+        return Parse.Promise.when(promises);
+
+      }).then(function() {
+        // Every comment was deleted.
+      });
+      */
 
 
 
@@ -285,7 +321,6 @@
   };
   </script>
 
-  <results-test-display></results-test-display>
 
 
 </drag-space>

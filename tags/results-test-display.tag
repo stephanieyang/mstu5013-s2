@@ -1,7 +1,7 @@
 <results-test-display>
   <button type="button" onclick={ testResults }>Test Results</button>
   <p>Testing!  Your results are: {results} !</p>
-  <%-- <p>Testing#2!  Your results are: {opts.selectedCategories} !</p> --%>
+  <p>Testing#2!  Your results are: {opts.selectedCategories} !</p>
   <h3>RESULTS TEST DISPLAY: <small show={visual}>no_results_yet</small></h3>
   <h3>You have selected interests in {newResults}!</h3>
   <h3>Some potential professions may include: {newProfessions}!</h3>
@@ -28,6 +28,9 @@
     //Perhaps we need to declare these items at a higher level, or somehow
     //include this functionality in the same file without getting too messy
     //**The solution may be to use Mixin for Riot.js
+
+    var testDisplayWord = "DisplayWord";
+    //return testDisplayWord;
 
 
 
@@ -62,9 +65,6 @@
     //   console.log(combo1, combo2, combo3);
 
     //return combo1;
-
-    var testDisplayWord = "DisplayWord";
-    //return testDisplayWord;
 
   }
 
