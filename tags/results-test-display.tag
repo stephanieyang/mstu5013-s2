@@ -1,15 +1,26 @@
 <results-test-display>
   <button type="button" onclick={ testResults }>Test Results</button>
   <p>Testing!  Your results are: {results} !</p>
-
+  <%-- <p>Testing#2!  Your results are: {opts.selectedCategories} !</p> --%>
+  <h3>RESULTS TEST DISPLAY: <small show={visual}>no_results_yet</small></h3>
+  <h3>You have selected interests in {newResults}!</h3>
+  <h3>Some potential professions may include: {newProfessions}!</h3>
 
 
 <script>
+  this.visual = true;
+
+  this.newResults = this.opts.selectedCategories;
+  this.newProfessions = this.opts.selectedCategories;
+
   this.results = "You like STEM!";
+  // this.results2 = this.opts.selectedCategories[0];
 
   //this.results = function() {}
 
   this.testResults = function(){
+    //need to hide the text UNTIL the "Get Results" button is pushed
+    //may need to do this inside of
     alert("I was pushed!");
     console.log("should have printed combo1");
     console.log(this.opts.selectedCategories[0]);
