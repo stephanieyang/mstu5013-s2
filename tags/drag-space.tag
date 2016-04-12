@@ -248,11 +248,6 @@
       var choice2 = selectedCategories[1];
       var choice3 = selectedCategories[2];
 
-      console.log("PRE-sort: You may be interested in: ");
-      console.log(choice1);
-      console.log(choice2);
-      console.log(choice3);
-
       var promises = [];
 
       var fieldList;
