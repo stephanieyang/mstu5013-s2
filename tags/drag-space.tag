@@ -4,17 +4,17 @@
       <div class="row">
         <div class="col-md-8">
           <div class="container" id="stagingCanvas">
-            <h3>Staging Canvas</h3>
+  <h3>Instructions</h3>
               <div id="directions">
                 <p>Left-click on images you like to move them from the picture bank to the stage or from the stage to the final zone.</p>
                 <p>Right-click on images to move them from the final zone to the stage or from the stage to the picture bank.</p>
                 <p>When you have <strong>exactly three</strong> images representing your biggest interests in the final zone, click "Get Results" to see what fields you might be interested in!</p>
               </div>
-              <h4>Stage</h4>
+              <h3>Stage</h3>
               <div id="stage">
                 <pic class='image' each={ image in this.stageItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
               </div>
-              <h4>Final Zone</h4>
+              <h3>Final Zone</h3>
               <div id="target">
                 <pic class='image' each={ image in this.targetItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
               </div>
@@ -22,6 +22,8 @@
         </div>
         <div class="col-md-4">
           <div class="container" id="picBank">
+
+          <h3>Picture Bank</h3>
             <pic class='image' each={ image in this.bankItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
           </div>
         </div>
@@ -219,10 +221,10 @@
    * Also changes the color of the target zone to reflect this. */
   this.handleTargetZone = function() {
     if(this.atMaxCapacity()) {
-      $(TARGET_ID).css('background-color','#C0C0C0');
+      $(TARGET_ID).css('background-color','#5E45D3');
       //dropZoneDisabledAtDragStart = false;
     } else {
-      $(TARGET_ID).css('background-color','#B6F9B6');
+      $(TARGET_ID).css('background-color','#BCED4D');
       //dropZoneDisabledAtDragStart = true;
     }
   };
@@ -315,7 +317,5 @@
     }
   };
   </script>
-
-
 
 </drag-space>
