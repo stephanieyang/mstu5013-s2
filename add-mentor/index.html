@@ -11,18 +11,21 @@
 	<div>
 		<form action="">
 			<label for="mentor-name">Mentor name:</label>
-			<input type="text" class="form-control" name="mentor-name" id="mentor-name"><br />
+			<input type="text" class="form-control" name="mentor-name" id="mentor-name" placeholder="First Last"><br />
 			<label for="mentor-bio">Bio:</label>
-			<textarea name="mentor-bio" id="mentor-bio"></textarea><br />
+			<textarea name="mentor-bio" id="mentor-bio" placeholder="Short bio (a few sentences will work)."></textarea><br />
+			<label for="mentor-categories">Categories:</label>
+			<input type="text" class="form-control" name="mentor-categories" id="mentor-categories" placeholder="math,biology - use spaces in 'computer science' but NOT between commas!"><br />
 			<label for="mentor-fields">Fields:</label>
-			<input type="text" class="form-control" name="mentor-fields" id="mentor-fields"><br />
+			<input type="text" class="form-control" name="mentor-fields" id="mentor-fields" placeholder="architecture,3D modeling,computational biology - NO spaces between commas!"><br />
 			<label for="mentor-img">Image link:</label>
-			<input type="text" class="form-control" name="mentor-img" id="mentor-img"><br />
-			<label for="mentor-links">External links:</label>
-			<textarea class="form-control" name="mentor-links" id="mentor-links"></textarea><br />
+			<input type="text" class="form-control" name="mentor-img" id="mentor-img" placeholder="Text link for an image"><br />
+			<label for="mentor-links">External link:</label>
+			<input class="form-control" name="mentor-links" id="mentor-link" placeholder="e.g., Wikipedia article"><br />
 			<button class="btn btn-sm btn-primary" id="add-mentor" type="button" role="button">Add Mentor</button>
 		</form>
 	</div>
+	<div id="results"></div>
 	<script src="main.js"></script>
 </body>
 </html>

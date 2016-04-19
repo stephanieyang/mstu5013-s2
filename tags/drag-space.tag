@@ -231,6 +231,7 @@
 
   // when the button is clicked, log which items are in the target drop zone
   this.getResults = function() {
+    $("#results").html('<p>Loading...</p>');
     console.log('number of selected items:', this.targetItems.length);
     console.log('items selected:', this.targetItems); // array of image information objects (storing filename, image ID, associated category) - see imageBank.js
     if(this.targetItems.length === 3) {
@@ -264,7 +265,10 @@
       var mentorList;
       var mentorQuery = new Parse.Query('Mentor');
       console.log("making mentor query");
-      mentorQuery.containedIn("fields", [choice1,choice2,choice3]);
+      //var fieldArray = [choice1,choice2,choice3];
+      $.unique(selectedCategories);
+      mentorQuery.containedIn("categories", selectedCategories);
+      //mentorQuery.include("fields");
       promises.push(mentorQuery.find().then(function(results) {
         console.log(results);
         mentorList = results; // list of Mentor objects
@@ -281,6 +285,7 @@
           'fieldList' : fieldList,
           'mentorList' : mentorList,
         });
+        $("#results").html('');
       });
 
 
