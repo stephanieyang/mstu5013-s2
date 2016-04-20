@@ -1,27 +1,129 @@
 var imageList = [
 {
-	imageSrc : 'fossil.gif',
-	imageId : 'fossil',
-	category : 'math'
-},
-{
-	imageSrc : 'plant.gif',
-	imageId : 'plant',
-	category : 'art'
-},
-{
-	imageSrc : 'incubator.gif',
-	imageId : 'incubator',
+	imageSrc : 'panda.png',
+	imageId : 'panda',
 	category : 'biology'
 },
 {
-	imageSrc : 'dropper.gif',
-	imageId : 'dropper',
-	category : 'chemistry'
+	imageSrc : 'flower.png',
+	imageId : 'flower',
+	category : 'biology'
 },
 {
-	imageSrc : 'star.png',
-	imageId : 'star',
-	category : 'physics'
+	imageSrc : 'skeleton.png',
+	imageId : 'skeleton',
+	category : 'biology'
 },
+{
+	imageSrc : 'gymnastics.png',
+	imageId : 'exercise',
+	category : 'biology'
+},
+
+    {
+        imageSrc : 'race-car.png',
+        imageId : 'race car',
+        category : 'physics'
+    },
+
+    {
+        imageSrc : 'radio.png',
+        imageId : 'electronics',
+        category : 'physics'
+    },
+    {
+        imageSrc : 'rocket.png',
+        imageId : 'rocket',
+        category : 'physics'
+    },
+    {
+        imageSrc : 'tower-bridge.jpg',
+        imageId : 'tower bridge',
+        category : 'physics'
+    },
+    {
+        imageSrc : 'fabric.jpeg',
+        imageId : 'fabrics',
+        category : 'chemistry'
+    },
+    {
+        imageSrc : 'cupcake.png',
+        imageId : 'cupcake',
+        category : 'chemisty'
+    },
+    {
+        imageSrc : 'lipstick.png',
+        imageId : 'lipstick',
+        category : 'chemistry'
+    },
+    {
+        imageSrc : 'firework.png',
+        imageId : 'fireworks',
+        category : 'chemistry'
+    },
+    {
+        imageSrc : 'iphone.png',
+        imageId : 'smartphone',
+        category : 'computerScience'
+    },
+    {
+        imageSrc : 'Video-Game.png',
+        imageId : 'computer game',
+        category : 'computerScience'
+    },
+
+    {
+        imageSrc : 'Social-Media.png',
+        imageId : 'social media',
+        category : 'computerScience'
+    },
+    {
+        imageSrc : 'robot.png',
+        imageId : 'robots',
+        category : 'computerScience'
+    },
+
+    {
+        imageSrc : 'spiral.png',
+        imageId : 'spirals',
+        category : 'math'
+    },
+    {
+        imageSrc : 'snowflake.png',
+        imageId : 'snowflake',
+        category : 'math'
+    },
+    {
+        imageSrc : 'calculator.png',
+        imageId : 'calculator',
+        category : 'math'
+    },
+    {
+        imageSrc : 'dollar.gif',
+        imageId : 'money',
+        category : 'math'
+    },
+
+{
+	imageSrc : 'artist-palette.png',
+	imageId : 'art palette',
+	category : 'art'
+
+},
+	{
+		imageSrc : 'writing.png',
+		imageId : 'writing',
+		category : 'art'
+	},
+	{
+		imageSrc : 'fashion.png',
+		imageId : 'fashion',
+		category : 'art'
+	},
+	{
+		imageSrc : 'pottery.png',
+		imageId : 'pottery',
+		category : 'art'
+	},
+
 ];
