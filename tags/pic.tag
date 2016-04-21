@@ -1,6 +1,6 @@
 <pic>
   <div class='image' id='test'>
-    <img src='img/{ image.imageSrc }' id='{ image.imageId }' alt='{ image.imageId }' />
+    <img src='img/{ image.imageSrc }' id='{ image.imageId }' alt='{ image.imageId }' title='{ image.imageId }' />
   </div>
   <script>
   </script>
