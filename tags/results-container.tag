@@ -90,6 +90,7 @@
 
   .mentor-profile p {
     font-size:1em;
+    word-wrap: break-word;
 
   }
 
@@ -100,6 +101,7 @@
   .mentor-profile img {
     display: block;
     margin:auto;
+    width:300px;
   }
   </style>
   <script>
