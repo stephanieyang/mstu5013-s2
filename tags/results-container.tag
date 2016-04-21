@@ -9,6 +9,7 @@
         <h3>RESULTS TEST DISPLAY: <small show={visual}>no_results_yet</small></h3> 
         <h3 show={ showResults }>You have selected interests in these fields:</h3>
         -->
+        <!--
         <div class="col-md-6 col-lg-4 col-sm-12 mentor-profile">
           <div class="mentor-pic">
             <img src="http://placehold.it/300x300" alt="mentor name goes here">
@@ -42,6 +43,7 @@
             <strong><a href="#">More Information</a></strong>
           </div>
         </div>
+        -->
         <!-- -->
 
         <div class="col-sm-12 col-md-6 col-lg-4 mentor-profile" each={mentor in opts.mentorList }>
@@ -52,7 +54,7 @@
             <h3>{ mentor.attributes.name }</h3>
             <p><strong>Fields:</strong> <span></span> { mentor.attributes.fields }
             <p>{ mentor.attributes.bio }</p>
-            <strong><a href="{ mentor.attributes.link }">More Information</a></strong>
+            <strong><a href="{ mentor.attributes.link }" target="_blank">More Information</a></strong>
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 mentor-profile" id="other-fields" show={ showResults }>
@@ -68,8 +70,8 @@
         <h3 show={ showResults }>You may be interested in the following people:</h3>
         <ul>
           <li each={mentor in opts.mentorList }><a href="{mentor.attributes.links}">{mentor.attributes.name}</a></li>
-          -->
         </ul>
+          -->
         <!-- <h3>Some potential professions may include: {newProfessions}!</h3> -->
         <!-- ADD THIS IN -->
 
@@ -86,6 +88,10 @@
 
   .mentor-profile {
     margin-bottom: 60px;
+    /*
+    max-width: 500px;
+    overflow: auto;
+    */
   }
 
   .mentor-profile p {

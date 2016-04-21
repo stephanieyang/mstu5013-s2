@@ -1,15 +1,17 @@
 <drag-space>
-  <div class="container" id="dragSpace">
+  <div class="container" id="drag-space">
     <h2>STEM APP</h2>
       <div class="row">
         <div class="col-md-8">
-          <div class="container" id="stagingCanvas">
+          <div class="container" id="staging-canvas">
   <h3>Instructions</h3>
               <div id="directions">
-                <img id="directionImg" src="img/mouse.png" alt="Directions">
-                <p><strong>Left-click</strong> on images you like to move them from the picture bank to the stage or from the stage to the final zone.</p>
-                <p><strong>Right-click</strong> on images to move them from the final zone to the stage or from the stage to the picture bank.</p>
-                <p>When you have <strong>exactly three</strong> images representing your biggest interests in the final zone, click "Get Results" to see what fields you might be interested in!</p>
+                  <img id="direction-graphic" src="img/mouse.png" class="pull-left" alt="Directions">
+                  <div id="direction-text">
+                    <p><strong>Left-click</strong> on images you like to move them from the picture bank to the stage or from the stage to the final zone.</p>
+                    <p><strong>Right-click</strong> on images to move them from the final zone to the stage or from the stage to the picture bank.</p>
+                    <p>When you have <strong>exactly three</strong> images representing your biggest interests in the final zone, click "Get Results" to see what fields you might be interested in!</p>
+                  </div>
               </div>
               <h3>Stage</h3>
               <div id="stage">
@@ -22,7 +24,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="container" id="picBank">
+          <div class="container" id="pic-bank">
 
           <h3>Picture Bank</h3>
             <pic class='image' each={ image in this.bankItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
@@ -37,35 +39,45 @@
       
   </div>
   <style scoped>
-  #directionImg {
+
+  #direction-text {
+    padding:10px;
+    vertical-align: middle;
+  }
+
+  #directions {
+    height: 300px;
+  }
+
+  #direction-graphic {
     display:block;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 25px;
     margin-bottom: 25px;
   }
   button {
     margin-top:25px;
     margin-bottom:25px;
   }
-  #dragSpace {
+  #drag-space {
   border-style: solid;
   border-width: 10px;
   border-color: #160D3A;
   background-color: white;
   }
-  #picBank {  border-style: solid;
+  #pic-bank {  border-style: solid;
   border-width: 10px;
   border-color: #160D3A;
   background-color: white;
   }
-  #stagingCanvas {
+  #staging-canvas {
   border-style: solid;
   border-width: 10px;
   border-color: #160D3A;
   background-color: white;
   }
 
-  #stagingCanvas div {
+  #staging-canvas div {
     margin: 10px;
   }
 
@@ -90,7 +102,7 @@
   </style>
   <script>
   var MAX_ITEMS = 3;
-  var BANK_ID = '#picBank';
+  var BANK_ID = '#pic-bank';
   var STAGE_ID = '#stage';
   var TARGET_ID = '#target';
   this.bankItems = []; // list of items/images in the picture bank
@@ -247,7 +259,7 @@
 
   // when the button is clicked, log which items are in the target drop zone
   this.getResults = function() {
-    $("#results").html('<p>Loading...</p>');
+    $("#loading").html('<p>Loading...</p>');
     console.log('number of selected items:', this.targetItems.length);
     console.log('items selected:', this.targetItems); // array of image information objects (storing filename, image ID, associated category) - see imageBank.js
     if(this.targetItems.length === 3) {
