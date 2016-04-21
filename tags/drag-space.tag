@@ -6,8 +6,9 @@
           <div class="container" id="stagingCanvas">
   <h3>Instructions</h3>
               <div id="directions">
-                <p>Left-click on images you like to move them from the picture bank to the stage or from the stage to the final zone.</p>
-                <p>Right-click on images to move them from the final zone to the stage or from the stage to the picture bank.</p>
+                <img id="directionImg" src="img/mouse.png" alt="Directions">
+                <p><strong>Left-click</strong> on images you like to move them from the picture bank to the stage or from the stage to the final zone.</p>
+                <p><strong>Right-click</strong> on images to move them from the final zone to the stage or from the stage to the picture bank.</p>
                 <p>When you have <strong>exactly three</strong> images representing your biggest interests in the final zone, click "Get Results" to see what fields you might be interested in!</p>
               </div>
               <h3>Stage</h3>
@@ -28,9 +29,24 @@
           </div>
         </div>
       </div>
-      <button type="button" onclick={ getResults }>Get Results</button>
+      <div class="row">
+        <div class="col-md-8">
+          <button type="button" class="btn-info btn-block btn-lg" onclick={ getResults }>Get Results</button>
+        </div>
+      </div>
+      
   </div>
   <style scoped>
+  #directionImg {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+  }
+  button {
+    margin-top:25px;
+    margin-bottom:25px;
+  }
   #dragSpace {
   border-style: solid;
   border-width: 10px;
