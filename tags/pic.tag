@@ -9,4 +9,9 @@
 		display: inline-block;
   	}
   </style>
+  <style scoped>
+  #test {
+  padding: 10px 2px 10px 2px;
+  }
+  </style>
 </pic>

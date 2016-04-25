@@ -21,41 +21,22 @@ var imageList = [
 },
 
     {
-        imageSrc : 'race-car.png',
-        imageId : 'race car',
-        category : 'physics'
-    },
-
-    {
         imageSrc : 'radio.png',
         imageId : 'electronics',
         category : 'physics'
-    },
-    {
-        imageSrc : 'rocket.png',
-        imageId : 'rocket',
-        category : 'physics'
-    },
-    {
-        imageSrc : 'tower-bridge.jpg',
-        imageId : 'tower bridge',
-        category : 'physics'
-    },
-    {
-        imageSrc : 'fabric.jpeg',
-        imageId : 'fabrics',
-        category : 'chemistry'
-    },
-    {
-        imageSrc : 'cupcake.png',
-        imageId : 'cupcake',
-        category : 'chemisty'
     },
     {
         imageSrc : 'lipstick.png',
         imageId : 'lipstick',
         category : 'chemistry'
     },
+
+    {
+        imageSrc : 'cupcake.png',
+        imageId : 'cupcake',
+        category : 'chemisty'
+    },
+
     {
         imageSrc : 'firework.png',
         imageId : 'fireworks',
@@ -67,36 +48,14 @@ var imageList = [
         category : 'computerScience'
     },
     {
-        imageSrc : 'Video-Game.png',
-        imageId : 'computer game',
-        category : 'computerScience'
-    },
-
-    {
-        imageSrc : 'Social-Media.png',
-        imageId : 'social media',
-        category : 'computerScience'
-    },
-    {
-        imageSrc : 'robot.png',
-        imageId : 'robots',
-        category : 'computerScience'
-    },
-
-    {
-        imageSrc : 'spiral.png',
-        imageId : 'spirals',
-        category : 'math'
-    },
-    {
-        imageSrc : 'snowflake.png',
-        imageId : 'snowflake',
-        category : 'math'
-    },
-    {
         imageSrc : 'calculator.png',
         imageId : 'calculator',
         category : 'math'
+    },
+    {
+        imageSrc : 'Video-Game.png',
+        imageId : 'computer game',
+        category : 'computerScience'
     },
     {
         imageSrc : 'dollar.gif',
@@ -104,26 +63,71 @@ var imageList = [
         category : 'math'
     },
 
-{
-	imageSrc : 'artist-palette.png',
-	imageId : 'art palette',
-	category : 'art'
+    {
+        imageSrc : 'race-car.png',
+        imageId : 'race car',
+        category : 'physics'
+    },
 
-},
+    {
+        imageSrc : 'snowflake.png',
+        imageId : 'snowflake',
+        category : 'math'
+    },
+    {
+        imageSrc : 'fashion.png',
+        imageId : 'fashion',
+        category : 'art'
+    },
+    {
+        imageSrc : 'rocket.png',
+        imageId : 'rocketship',
+        category : 'physics'
+    },
+    {
+        imageSrc : 'artist-palette.png',
+        imageId : 'art palette',
+        category : 'art'
+
+    },
+    {
+        imageSrc : 'fabric.jpeg',
+        imageId : 'fabrics',
+        category : 'chemistry'
+    },
+
+    {
+        imageSrc : 'tower-bridge.jpg',
+        imageId : 'tower bridge',
+        category : 'physics'
+    },
+    {
+        imageSrc : 'robot.png',
+        imageId : 'robots',
+        category : 'computerScience'
+    },
+    {
+        imageSrc : 'pottery.png',
+        imageId : 'pottery',
+        category : 'art'
+    },
+    {
+        imageSrc : 'spiral.png',
+        imageId : 'spirals',
+        category : 'math'
+    },
+    {
+        imageSrc : 'Social-Media.png',
+        imageId : 'social media',
+        category : 'computerScience'
+    },
+
 	{
 		imageSrc : 'writing.png',
 		imageId : 'writing',
 		category : 'art'
 	},
-	{
-		imageSrc : 'fashion.png',
-		imageId : 'fashion',
-		category : 'art'
-	},
-	{
-		imageSrc : 'pottery.png',
-		imageId : 'pottery',
-		category : 'art'
-	},
+
+
 
 ];

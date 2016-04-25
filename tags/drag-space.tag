@@ -15,11 +15,15 @@
               </div>
               <h3>Stage</h3>
               <div id="stage">
+  <p>
                 <pic class='image' each={ image in this.stageItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
+  </p>
               </div>
               <h3>Final Zone</h3>
               <div id="target">
+  <p>
                 <pic class='image' each={ image in this.targetItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
+  </p>
               </div>
           </div>
         </div>
@@ -27,34 +31,44 @@
           <div class="container" id="pic-bank">
 
           <h3>Picture Bank</h3>
+  <p>
             <pic class='image' each={ image in this.bankItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
+  </p>
+  </p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-8">
-          <button type="button" class="btn-info btn-block btn-lg" onclick={ getResults }>Get Results</button>
+  <div class="container" id="button">
+  <button type="button" class="btn-info btn-block btn-lg" onclick={ getResults }>Get Results</button>
         </div>
       </div>
-      
+
   </div>
   <style scoped>
 
+  #direction-graphic {
+  margin-left: auto;
+  margin-right: 25px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  };
+
+  #directions {
+  margin:0px 10px 0px 10px;
+  }
+
   #direction-text {
-    padding:10px;
+    padding:10px 10px 0px 10px;
     vertical-align: middle;
   }
 
-  #directions {
-    height: 300px;
+  h3:not(:first-child){
+  margin-top: 40px;
   }
 
-  #direction-graphic {
-    display:block;
-    margin-left: auto;
-    margin-right: 25px;
-    margin-bottom: 25px;
-  }
+
   button {
     margin-top:25px;
     margin-bottom:25px;
@@ -82,23 +96,34 @@
   }
 
   #stage {
-    height:200px;
   border-style: solid;
   border-width: 10px;
   border-color: #160D3A;
-  background-color: white;
+  padding: 50px 10px 50px 10px;
+  margin-bottom: 100px;
   }
 
+
   #target {
-    height:200px;
     background-color: #BCED4D;
   border-color: #160D3A;
   border-style: solid;
   border-width: 10px;
+  padding: 50px 55px 75px 55px;
+  position: relative
   }
+
+  #target p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+    }
   #directions p {
     font-size: 1em;
   }
+
   </style>
   <script>
   var MAX_ITEMS = 3;
