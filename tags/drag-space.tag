@@ -322,6 +322,7 @@
       $.unique(selectedCategories);
       mentorQuery.containedIn("categories", selectedCategories);
       //mentorQuery.include("fields");
+      //mentorQuery.include('author.user');
       promises.push(mentorQuery.find().then(function(results) {
         console.log(results);
         mentorList = results; // list of Mentor objects
