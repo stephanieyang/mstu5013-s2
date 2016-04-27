@@ -88,6 +88,9 @@
 
   .mentor-profile {
     margin-bottom: 60px;
+  float: left;
+  overflow: hidden;
+  height: 650px;
     /*
     max-width: 500px;
     overflow: auto;
