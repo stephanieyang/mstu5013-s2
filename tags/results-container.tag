@@ -52,15 +52,18 @@
           </div>
           <div class="bio">
             <h3>{ mentor.attributes.name }</h3>
-            <p><strong>Fields:</strong> <span></span> { mentor.attributes.fields }
+            <p><strong>Fields:</strong> <a each={ field in mentor.attributes.fieldList } href="#field-{ field }">{ field } </a></p>
             <p>{ mentor.attributes.bio }</p>
             <strong><a href="{ mentor.attributes.link }" target="_blank">More Information</a></strong>
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 mentor-profile" id="other-fields" show={ showResults }>
-          <p>You may also be interested in:</p>
+          <h3>You may also be interested in:</h3>
           <ul>
-            <li each={ field in this.miscFields }>{ field }</li>
+            <div each={ field in opts.fieldList } id="field-{ field.attributes.name }">
+              <h4><a href="{ field.attributes.links }" target="_blank">{ field.attributes.name }</a></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nam, ab velit eveniet eligendi perferendis quod! Porro ex enim voluptatibus.</p>
+            </div>
           </ul>
         </div>
         <!--
@@ -127,13 +130,10 @@
     console.log('update');
     if(this.selections) {
       this.showResults = true;
-      if(!this.handledMiscFields) {
-        this.findMiscFields();
-        this.handledMiscFields = true;
-      }
     } else {
       this.showResults = false;
     }
+    console.log("fieldList",this.opts.fieldList);
 
   });
   this.findMiscFields = function() {
