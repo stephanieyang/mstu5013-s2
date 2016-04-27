@@ -62,7 +62,7 @@
           <ul>
             <div each={ field in opts.fieldList } id="field-{ field.attributes.name }">
               <h4><a href="{ field.attributes.links }" target="_blank">{ field.attributes.name }</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nam, ab velit eveniet eligendi perferendis quod! Porro ex enim voluptatibus.</p>
+              <p>{ field.attributes.desc }</p>
             </div>
           </ul>
         </div>
@@ -91,9 +91,9 @@
 
   .mentor-profile {
     margin-bottom: 60px;
-  float: left;
-  overflow: hidden;
-  height: 650px;
+    float: left;
+    overflow: hidden;
+    height: 650px;
     /*
     max-width: 500px;
     overflow: auto;
