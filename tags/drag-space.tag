@@ -15,34 +15,32 @@
               </div>
               <h3>Stage</h3>
               <div id="stage">
-  <p>
                 <pic class='image' each={ image in this.stageItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
-  </p>
               </div>
               <h3>Final Zone</h3>
               <div id="target">
-  <p>
+
                 <pic class='image' each={ image in this.targetItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
-  </p>
-              </div>
-          </div>
+
+  </div>
+
+  <div id="button">
+  <button type="button" class="btn-info btn-block btn-lg" onclick={getResults}>Get Results</button>
+  </div>
+  </div>
+
         </div>
         <div class="col-md-4">
           <div class="container" id="pic-bank">
 
           <h3>Picture Bank</h3>
-  <p>
             <pic class='image' each={ image in this.bankItems } onclick={ handleImageClick } oncontextmenu={ handleRightClick }></pic>
-  </p>
-  </p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-8">
-  <div class="container" id="button">
-  <button type="button" class="btn-info btn-block btn-lg" onclick={ getResults }>Get Results</button>
-        </div>
+
       </div>
 
   </div>
@@ -52,7 +50,7 @@
   margin-left: auto;
   margin-right: 25px;
   margin-top: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 25px
   };
 
   #directions {
@@ -70,9 +68,9 @@
 
 
   button {
-    margin-top:25px;
-    margin-bottom:25px;
+    margin-top:40px;
   }
+
   #drag-space {
   border-style: solid;
   border-width: 10px;
@@ -82,6 +80,7 @@
   #pic-bank {  border-style: solid;
   border-width: 10px;
   border-color: #160D3A;
+  margin-bottom:25px;
   background-color: white;
   }
   #staging-canvas {
@@ -99,27 +98,23 @@
   border-style: solid;
   border-width: 10px;
   border-color: #160D3A;
-  padding: 50px 10px 50px 10px;
+  padding: 65px 10px 65px 10px;
   margin-bottom: 100px;
   }
 
-
   #target {
-    background-color: #BCED4D;
+  background-color: #BCED4D;
   border-color: #160D3A;
   border-style: solid;
   border-width: 10px;
-  padding: 50px 55px 75px 55px;
-  position: relative
+  padding: 65px 55px 65px 55px;
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center
   }
 
-  #target p{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-    }
+
   #directions p {
     font-size: 1em;
   }
