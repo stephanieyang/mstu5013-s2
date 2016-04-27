@@ -46,17 +46,7 @@
         -->
         <!-- -->
 
-        <div class="col-sm-12 col-md-6 col-lg-4 mentor-profile" each={mentor in opts.mentorList }>
-          <div class="mentor-pic">
-            <img src="{ mentor.attributes.img }" alt="{ mentor.attributes.name }">
-          </div>
-          <div class="bio">
-            <h3>{ mentor.attributes.name }</h3>
-            <p><strong>Fields:</strong> <a each={ field in mentor.attributes.fieldList } href="#field-{ field }">{ field } </a></p>
-            <p>{ mentor.attributes.bio }</p>
-            <strong><a href="{ mentor.attributes.link }" target="_blank">More Information</a></strong>
-          </div>
-        </div>
+        <mentor each={mentor in opts.mentorList }></mentor>
         <div class="col-sm-12 col-md-12 col-lg-12 mentor-profile" id="other-fields" show={ showResults }>
           <h3>You may also be interested in:</h3>
           <ul>
