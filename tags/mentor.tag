@@ -6,7 +6,6 @@
       <div class="bio">
         <h3>{ mentor.attributes.name }</h3>
         <p><strong>Fields:</strong> <a each={ field in mentor.attributes.fieldList } href="#field-{ field }">{ field } </a></p>
-        <p><strong>Categories:</strong> <span each={ category in mentor.attributes.categories }>{ category } </a></p>
         <p>{ mentor.attributes.bio }</p>
         <strong><a href="{ mentor.attributes.link }" target="_blank">More Information</a></strong>
       </div>
