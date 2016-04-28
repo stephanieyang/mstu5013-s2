@@ -47,13 +47,10 @@
         <!-- -->
 
         <mentor each={mentor in opts.mentorList }></mentor>
-        <div class="col-sm-12 col-md-12 col-lg-12 mentor-profile" id="other-fields" show={ showResults }>
+        <div class="col-sm-12 col-md-12 col-lg-12" id="other-fields" show={ showResults }>
           <h3>You may also be interested in:</h3>
           <ul>
-            <div each={ field in opts.fieldList } id="field-{ field.attributes.name }">
-              <h4><a href="{ field.attributes.links }" target="_blank">{ field.attributes.name }</a></h4>
-              <p>{ field.attributes.desc }</p>
-            </div>
+            <field each={ field in opts.fieldList }></field>
           </ul>
         </div>
         <!--
@@ -90,7 +87,7 @@
     */
   }
 
-  .mentor-profile p {
+  .mentor-profile p, .field-profile p {
     font-size:1em;
     word-wrap: break-word;
 
