@@ -1,6 +1,6 @@
 <drag-space>
   <div class="container" id="drag-space">
-    <h2>STEM APP</h2>
+    <h2>Which Savvy STEMinist Are You?</h2>
       <div class="row">
         <div class="col-md-8">
           <div class="container" id="staging-canvas">
@@ -295,87 +295,35 @@
 
       // do stuff
 
-      /* Slightly modified from:
-       * http://stackoverflow.com/questions/22566379/how-to-get-all-pairs-of-array-javascript
-       */
-      Array.prototype.pairs = function (func) {
-        if(this.length <= 1) {
-          console.log("Error: length <= 1");
-          return;
-        }
-        var pairs = [];
-        for (var i = 0; i < this.length - 1; i++) {
-            for (var j = i; j < this.length - 1; j++) {
-                func([this[i], this[j+1]]);
-            }
-        }
-      }
-
       var choice1 = selectedCategories[0];
       var choice2 = selectedCategories[1];
       var choice3 = selectedCategories[2];
 
       var promises = [];
 
-      this.fieldList = [];
-      this.mentorList = [];
-      var that = this;
+      var fieldList;
       var fieldQuery = new Parse.Query('Field');
+      console.log("making field query");
+      fieldQuery.containedIn("categories", [choice1,choice2,choice3]);
+      promises.push(fieldQuery.find().then(function(results) {
+        console.log(results);
+        fieldList = results; // list of Field objects
+      }));
+
+      var mentorList;
       var mentorQuery = new Parse.Query('Mentor');
-      console.log("making field queries");
-
-
-    var list = [1, 2, 3];
-    list.pairs(function(pair){
-        console.log(pair); // [1,2], [1,3], [2,3]
-    });
-
+      console.log("making mentor query");
+      //var fieldArray = [choice1,choice2,choice3];
       $.unique(selectedCategories);
-      if(selectedCategories.length == 1) { // pairwise not possible
-        // field query
-        fieldQuery.containsAll("categories", [choice1]);
-        fieldQuery.ascending("name");
-        promises.push(fieldQuery.find().then(function(results) {
-          console.log(results);
-          for(var i = 0; i < results.length; i++) {
-            that.fieldList.push(results[i]);
-          }
-        }));
-        // mentor query
-        mentorQuery.containsAll("categories", [choice1]);
-        promises.push(mentorQuery.find().then(function(results) {
-          console.log(results);
-          for(var i = 0; i < results.length; i++) {
-            that.mentorList.push(results[i]);
-          }
-        }));
-
-      } else { // pairwise possible
-        selectedCategories.pairs(function(pair){
-          console.log("pair",pair);
-          // field queries
-          fieldQuery.containsAll("categories", pair);
-          fieldQuery.ascending("name");
-          promises.push(fieldQuery.find().then(function(results) {
-            console.log(results);
-            for(var i = 0; i < results.length; i++) {
-              that.fieldList.push(results[i]);
-            }
-          }));
-          // mentor queries
-
-          mentorQuery.containsAll("categories", pair);
-          promises.push(mentorQuery.find().then(function(results) {
-            console.log(results);
-            for(var i = 0; i < results.length; i++) {
-              that.mentorList.push(results[i]);
-            }
-          }));
-        });
-      }
+      mentorQuery.containedIn("categories", selectedCategories);
+      //mentorQuery.include("fields");
+      //mentorQuery.include('author.user');
+      promises.push(mentorQuery.find().then(function(results) {
+        console.log(results);
+        mentorList = results; // list of Mentor objects
+      }));
 
       Parse.Promise.when(promises).then(function() {
-        that.fieldList.sort();
         console.log("done with promises");
 
         console.log("mounting");
@@ -383,8 +331,8 @@
         // mount the results container, pass in the results
         riot.mount('results-container', {
           'selectedCategories' : selectedCategories,
-          'fieldList' : that.fieldList,
-          'mentorList' : that.mentorList,
+          'fieldList' : fieldList,
+          'mentorList' : mentorList,
         });
         $("#results").html('');
       });
