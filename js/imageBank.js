@@ -34,7 +34,7 @@ var imageList = [
     {
         imageSrc : 'cupcake.png',
         imageId : 'cupcake',
-        category : 'chemisty'
+        category : 'chemistry'
     },
 
     {
