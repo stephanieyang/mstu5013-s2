@@ -7,7 +7,6 @@
 	<style scoped>
 	#app {
   	background-color: #442ABA;
-	font-family: 'Roboto', sans-serif;
 	margin:0;
 		}
 
@@ -20,6 +19,7 @@
 	color: white;
 	margin-top: 0;
 	padding: 10px;
+	font-family: 'Roboto', sans-serif;
 
 	}
 
