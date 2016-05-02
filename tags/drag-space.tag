@@ -334,7 +334,7 @@
           }
         }));
         // mentor query
-        mentorQuery.containedIn("categories", [choice1]);
+        mentorQuery.containedIn("categories", [selectedCategories[0]]);
         promises.push(mentorQuery.find().then(function(results) {
           //console.log(results);
           for(var i = 0; i < results.length; i++) {
