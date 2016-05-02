@@ -181,7 +181,7 @@
     var imageId = event.item.image.imageId;
     var currentLoc = this.getImageLocation(imageId);
     var dest = determineDestination(currentLoc, isForward);
-    console.log('current',currentLoc,'dest',dest);
+    //console.log('current',currentLoc,'dest',dest);
     if(currentLoc === dest) {
       console.log('invalid/same destination:',dest);
       // do nothing
@@ -224,7 +224,7 @@
 
   /* Handles the swapping of items between lists for different area locations. */
   this.moveItem = function(id, src, dest) {
-    console.log('moveItem',id,src,dest);
+    //console.log('moveItem',id,src,dest);
     var item;
     // remove item from its current list
     switch(src) {
@@ -262,7 +262,7 @@
     }
     // log the change in location
     this.setImageLocation(id,dest);
-    console.log(this.itemDetails);
+    //console.log(this.itemDetails);
   }
 
   /* Handles the logic of whether the target zone ought to accept/reject new images.
@@ -277,13 +277,30 @@
     }
   };
 
+  
+
+  /* Slightly modified from:
+   * http://stackoverflow.com/questions/22566379/how-to-get-all-pairs-of-array-javascript
+   */
+  Array.prototype.pairs = function (func) {
+    if(this.length <= 1) {
+      console.log("Error: length <= 1");
+      return;
+    }
+    var pairs = [];
+    for (var i = 0; i < this.length - 1; i++) {
+        for (var j = i; j < this.length - 1; j++) {
+            func([this[i], this[j+1]]);
+        }
+    }
+  }
+
   // when the button is clicked, log which items are in the target drop zone
   this.getResults = function() {
     $("#loading").html('<p>Loading...</p>');
-    console.log('number of selected items:', this.targetItems.length);
-    console.log('items selected:', this.targetItems); // array of image information objects (storing filename, image ID, associated category) - see imageBank.js
+    //console.log('number of selected items:', this.targetItems.length);
+    //console.log('items selected:', this.targetItems); // array of image information objects (storing filename, image ID, associated category) - see imageBank.js
     if(this.targetItems.length === 3) {
-      console.log('at correct capacity');
       //var itemIds = [];
       var selectedCategories = [];
       for(var i = 0; i < this.targetItems.length; i++) {
@@ -292,24 +309,6 @@
       //alphabetically sorted each category in targetItems
       selectedCategories.sort();
       console.log(selectedCategories); // array of item categories - e.g., ['math','biology','chemistry']
-
-      // do stuff
-
-      /* Slightly modified from:
-       * http://stackoverflow.com/questions/22566379/how-to-get-all-pairs-of-array-javascript
-       */
-      Array.prototype.pairs = function (func) {
-        if(this.length <= 1) {
-          console.log("Error: length <= 1");
-          return;
-        }
-        var pairs = [];
-        for (var i = 0; i < this.length - 1; i++) {
-            for (var j = i; j < this.length - 1; j++) {
-                func([this[i], this[j+1]]);
-            }
-        }
-      }
 
       var choice1 = selectedCategories[0];
       var choice2 = selectedCategories[1];
@@ -322,42 +321,40 @@
       var that = this;
       var fieldQuery = new Parse.Query('Field');
       var mentorQuery = new Parse.Query('Mentor');
-      console.log("making field queries");
 
 
-    var list = [1, 2, 3];
-    list.pairs(function(pair){
-        console.log(pair); // [1,2], [1,3], [2,3]
-    });
+   
 
       $.unique(selectedCategories);
+      // when only one category is selected (all images have the same category), output all mentors/fields related to that one category
       if(selectedCategories.length == 1) { // pairwise not possible
         // field query
-        fieldQuery.containsAll("categories", [choice1]);
+        fieldQuery.containedIn("categories", [choice1]);
         fieldQuery.ascending("name");
         promises.push(fieldQuery.find().then(function(results) {
-          console.log(results);
+          //console.log(results);
           for(var i = 0; i < results.length; i++) {
             that.fieldList.push(results[i]);
           }
         }));
         // mentor query
-        mentorQuery.containsAll("categories", [choice1]);
+        mentorQuery.containedIn("categories", [choice1]);
         promises.push(mentorQuery.find().then(function(results) {
-          console.log(results);
+          //console.log(results);
           for(var i = 0; i < results.length; i++) {
             that.mentorList.push(results[i]);
           }
         }));
 
       } else { // pairwise possible
+        // when multiple categories are selected, output mentors/fields associated with the categories' pairwise intersections
         selectedCategories.pairs(function(pair){
-          console.log("pair",pair);
+          //console.log("pair",pair);
           // field queries
           fieldQuery.containsAll("categories", pair);
           fieldQuery.ascending("name");
           promises.push(fieldQuery.find().then(function(results) {
-            console.log(results);
+            //console.log(results);
             for(var i = 0; i < results.length; i++) {
               that.fieldList.push(results[i]);
             }
@@ -366,7 +363,7 @@
 
           mentorQuery.containsAll("categories", pair);
           promises.push(mentorQuery.find().then(function(results) {
-            console.log(results);
+            //console.log(results);
             for(var i = 0; i < results.length; i++) {
               that.mentorList.push(results[i]);
             }
@@ -388,37 +385,6 @@
         });
         $("#results").html('');
       });
-
-
-
-      /*
-      var query = new Parse.Query("Comments");
-      query.equalTo("post", 123);
-
-      query.find().then(function(results) {
-        // Collect one promise for each delete into an array.
-        var promises = [];
-        _.each(results, function(result) {
-          // Start this delete immediately and add its promise to the list.
-          promises.push(result.destroy());
-        });
-        // Return a new promise that is resolved when all of the deletes are finished.
-        return Parse.Promise.when(promises);
-
-      }).then(function() {
-        // Every comment was deleted.
-      });
-      */
-
-
-
-
-      /*
-      var combo1 = categoryBank[choice1][choice2];
-      var combo2 = categoryBank[choice1][choice3];
-      var combo3 = categoryBank[choice2][choice3];
-      console.log(combo1, combo2, combo3);
-      */
 
     }
   };

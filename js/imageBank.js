@@ -34,7 +34,7 @@ var imageList = [
     {
         imageSrc : 'cupcake.png',
         imageId : 'cupcake',
-        category : 'chemisty'
+        category : 'chemistry'
     },
 
     {
@@ -45,7 +45,7 @@ var imageList = [
     {
         imageSrc : 'iphone.png',
         imageId : 'smartphone',
-        category : 'computerScience'
+        category : 'computer science'
     },
     {
         imageSrc : 'calculator.png',
@@ -55,7 +55,7 @@ var imageList = [
     {
         imageSrc : 'Video-Game.png',
         imageId : 'computer game',
-        category : 'computerScience'
+        category : 'computer science'
     },
     {
         imageSrc : 'dollar.gif',
@@ -104,7 +104,7 @@ var imageList = [
     {
         imageSrc : 'robot.png',
         imageId : 'robots',
-        category : 'computerScience'
+        category : 'computer science'
     },
     {
         imageSrc : 'pottery.png',
@@ -119,7 +119,7 @@ var imageList = [
     {
         imageSrc : 'Social-Media.png',
         imageId : 'social media',
-        category : 'computerScience'
+        category : 'computer science'
     },
 
 	{
