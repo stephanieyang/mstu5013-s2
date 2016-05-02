@@ -1,14 +1,28 @@
 <app>
 	<div class="jumbotron" id="app">
-     	<h1></h1>
+     	<header><h1>Which Savvy STEMinist Are You?</h1></header>
     	<drag-space></drag-space>
     	<results-container></results-container>
 	</div>
 	<style scoped>
-	h1 {  margin-left: 65px;
-	}
 	#app {
   	background-color: #442ABA;
+	font-family: 'Roboto', sans-serif;
+	margin:0;
 		}
+
+	header {background-color: rgba(255, 255, 255, 0.1);
+
+	}
+	#app h1 {
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	margin-top: 0;
+	padding: 10px;
+
+	}
+
+
     </style>
 </app>

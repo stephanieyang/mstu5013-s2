@@ -1,6 +1,6 @@
 <drag-space>
   <div class="container" id="drag-space">
-    <h2>Which Savvy STEMinist Are You?</h2>
+  <h2>Play Space</h2>
       <div class="row">
         <div class="col-md-8">
           <div class="container" id="staging-canvas">
@@ -10,7 +10,7 @@
                   <div id="direction-text">
                     <p><strong>Left-click</strong> on images you like to move them from the picture bank to the stage or from the stage to the final zone.</p>
                     <p><strong>Right-click</strong> on images to move them from the final zone to the stage or from the stage to the picture bank.</p>
-                    <p>When you have <strong>exactly three</strong> images representing your biggest interests in the final zone, click "Get Results" to see what fields you might be interested in!</p>
+                    <p>When you have <strong>exactly three</strong> images representing your biggest interests in the final zone, click "Get Results" to see what fields you might be interested in and which savvy STEMinist you might be!</p>
                   </div>
               </div>
               <h3>Stage</h3>
@@ -46,12 +46,13 @@
   </div>
   <style scoped>
 
+
   #direction-graphic {
   margin-left: auto;
   margin-right: 25px;
   margin-top: 15px;
   margin-bottom: 25px
-  };
+  }
 
   #directions {
   margin:0px 10px 0px 10px;
@@ -62,10 +63,9 @@
     vertical-align: middle;
   }
 
-  h3:not(:first-child){
+  h2:not(:first-child){
   margin-top: 40px;
   }
-
 
   button {
     margin-top:40px;
