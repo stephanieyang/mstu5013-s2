@@ -5,10 +5,10 @@
       </div>
       <div class="bio">
         <h3>{ mentor.attributes.name }</h3>
-        <p><strong>Fields:</strong> <span each={ field in mentor.attributes.fieldList }>{ field } </span></p>
-        <p><a href="#other-fields">See more about these fields...</a></p>
+        <p><strong>Fields:</strong> <span each={ field in mentor.attributes.fieldList }>{ field } </span><br />
+        <a href="#other-fields">See more about these fields...</a></p>
         <p>{ mentor.attributes.bio }</p>
-        <strong><a href="{ mentor.attributes.link }" target="_blank">More Information</a></strong>
+        <strong><a href="{ mentor.attributes.link }" target="_blank">More information about this STEMinist</a></strong>
       </div>
     </div>
   <style scoped>

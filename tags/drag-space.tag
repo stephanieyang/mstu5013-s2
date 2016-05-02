@@ -310,10 +310,6 @@
       selectedCategories.sort();
       console.log(selectedCategories); // array of item categories - e.g., ['math','biology','chemistry']
 
-      var choice1 = selectedCategories[0];
-      var choice2 = selectedCategories[1];
-      var choice3 = selectedCategories[2];
-
       var promises = [];
 
       this.fieldList = [];
@@ -329,7 +325,7 @@
       // when only one category is selected (all images have the same category), output all mentors/fields related to that one category
       if(selectedCategories.length == 1) { // pairwise not possible
         // field query
-        fieldQuery.containedIn("categories", [choice1]);
+        fieldQuery.containedIn("categories", [selectedCategories[0]]);
         fieldQuery.ascending("name");
         promises.push(fieldQuery.find().then(function(results) {
           //console.log(results);
@@ -351,7 +347,13 @@
         selectedCategories.pairs(function(pair){
           //console.log("pair",pair);
           // field queries
-          fieldQuery.containsAll("categories", pair);
+          firstCategoryQuery = new Parse.Query('Field');
+          secondCategoryQuery = new Parse.Query('Field');
+          intersectionQuery = new Parse.Query('Field');
+          firstCategoryQuery.equalTo("name", pair[0]);
+          secondCategoryQuery.equalTo("name", pair[1]);
+          intersectionQuery.containsAll("categories", pair);
+          fieldQuery = Parse.Query.or(firstCategoryQuery, secondCategoryQuery, intersectionQuery);
           fieldQuery.ascending("name");
           promises.push(fieldQuery.find().then(function(results) {
             //console.log(results);
