@@ -374,6 +374,7 @@
       }
 
       Parse.Promise.when(promises).then(function() {
+        $.unique(that.fieldList);
         that.fieldList.sort();
         console.log("done with promises");
 
