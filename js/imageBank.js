@@ -44,7 +44,7 @@ var imageList = [
     },
     {
         imageSrc : 'iphone.png',
-        imageId : 'smArtphone',
+        imageId : 'smartphone',
         category : 'Computer science'
     },
     {
@@ -85,7 +85,7 @@ var imageList = [
         category : 'Physics'
     },
     {
-        imageSrc : 'Artist-palette.png',
+        imageSrc : 'artist-palette.png',
         imageId : 'Art palette',
         category : 'Art'
 
