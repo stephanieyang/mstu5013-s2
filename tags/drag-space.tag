@@ -51,19 +51,19 @@
   margin-left: auto;
   margin-right: 25px;
   margin-top: 15px;
-  margin-bottom: 25px
+  margin-bottom: 25px;
   }
 
   #directions {
-  margin:0px 10px 0px 10px;
+  margin:0 10px 0 10px;
   }
 
   #direction-text {
-    padding:10px 10px 0px 10px;
+    padding:10px 10px 0 10px;
     vertical-align: middle;
   }
 
-  h2:not(:first-child){
+  h3:not(:first-child){
   margin-top: 40px;
   }
 
@@ -77,12 +77,15 @@
   border-color: #160D3A;
   background-color: white;
   }
-  #pic-bank {  border-style: solid;
+
+  #pic-bank {
+  margin-bottom:25px;
+  border-style: solid;
   border-width: 10px;
   border-color: #160D3A;
-  margin-bottom:25px;
   background-color: white;
   }
+
   #staging-canvas {
   border-style: solid;
   border-width: 10px;
@@ -111,9 +114,8 @@
   height: 10em;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
   }
-
 
   #directions p {
     font-size: 1em;

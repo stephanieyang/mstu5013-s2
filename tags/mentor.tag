@@ -37,6 +37,7 @@
     display: block;
     margin:auto;
     width:300px;
+    height:300px;
   }
   </style>
   <script>
