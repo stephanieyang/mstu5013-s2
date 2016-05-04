@@ -368,13 +368,21 @@
 						}
 					}));
 
+
+					console.log("selectedCategories",selectedCategories);
+					console.log("mentorQueryList", mentorQueryList);
+
 					// mentor query
-					mentorQuery = Parse.Query.or(mentorQueryList[0], mentorQueryList[1]);
-					mentorQuery.include('fields');
-					for(var i = 2; i < mentorQueryList.length; i++) { // leave out first two
-						var tempQuery = mentorQuery;
-						var currentQuery = mentorQueryList[i];
-						mentorQuery = Parse.Query.or(tempQuery, currentQuery);
+					if(mentorQueryList.length > 1) {
+						mentorQuery = Parse.Query.or(mentorQueryList[0], mentorQueryList[1]);
+						mentorQuery.include('fields');
+						for(var i = 2; i < mentorQueryList.length; i++) { // leave out first two
+							var tempQuery = mentorQuery;
+							var currentQuery = mentorQueryList[i];
+							mentorQuery = Parse.Query.or(tempQuery, currentQuery);
+						}
+					} else {	// account for XXY cases, where there's only one combo => no need to OR
+						mentorQuery = mentorQueryList[0];
 					}
 					promises.push(mentorQuery.find().then(function(results) {
 						for(var i = 0; i < results.length; i++) {
