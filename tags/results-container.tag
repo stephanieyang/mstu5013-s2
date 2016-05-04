@@ -1,6 +1,6 @@
 <results-container>
  <div class="container" id="resultsContainer">
-  <h2>Results</h2>
+  <h2>Your Results</h2>
     <div id="loading"></div>
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12">

@@ -263,7 +263,8 @@
 
 		
 
-		/* Slightly modified from:
+		/* Takes each combination of two elements in an array and operates on the pair.
+		 * Very slightly tweaked from:
 		 * http://stackoverflow.com/questions/22566379/how-to-get-all-pairs-of-array-javascript
 		 */
 		Array.prototype.pairs = function (func) {
@@ -329,7 +330,9 @@
 					var fieldQueryList = [];
 					var mentorQueryList = [];
 
-					/* Part 1: smaller queries */
+					/* Part 1: smaller queries
+					 * Take the categories pairwise and form queries based on each pair.
+					 */
 					selectedCategories.pairs(function(pair){
 						// field queries
 						firstCategoryQuery = new Parse.Query('Field');
@@ -389,6 +392,7 @@
 						var secondFieldName = String(field2.attributes.name);
 						return firstFieldName.localeCompare(secondFieldName);
 					});
+					console.log(that.fieldList);
 					console.log("mounting");
 					// mount the results container, pass in the results
 					riot.mount('results-container', {
